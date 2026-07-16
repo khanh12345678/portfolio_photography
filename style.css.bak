@@ -1,0 +1,311 @@
+*{
+    box-sizing: border-box;
+}
+body{ 
+    background-color: black;
+}
+#topnav{ 
+    background-color: black;
+    overflow: hidden;
+}
+#topnav a{ 
+    float: right;
+    color: aliceblue;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+#topnav a:hover{ 
+    background-color: #408DD4;
+}
+#body{ 
+    height: 500px;
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100%); /* Start completely below its original position */
+    opacity: 0;                  /* Start completely invisible */
+  }
+  to {
+    transform: translateY(0);    /* End at its natural layout position */
+    opacity: 1;                  /* End completely visible */
+  }
+}
+#left{ 
+    flex:1;
+    color:aliceblue;
+    float:left;
+    padding:15px 12px;
+    animation-name: slideUp;
+    animation-duration: 4s;
+    justify-content: center;
+    flex-direction: column;
+
+}
+#left h1{ 
+    font-size:40px;
+    font:italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#left p{ 
+    animation-name: slideUp;
+    animation-duration: 4s;
+    font-size:20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+#left button{ 
+    padding: 15px 25px;
+    border-radius: 15px;
+    background:linear-gradient(45deg,#68B55E,#2E669A,#408DD4);
+}
+#left button:hover{ 
+    transform: translateY(-10px);
+    background:linear-gradient(45deg,#57984F,#68B55E,#2E669A);
+}
+#right{ 
+    flex:0 0 50%;
+    max-width: 1300px;
+    min-width: 250px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    justify-content: center;
+    align-items: center;
+}
+#right img {
+    /* animation-name: slideUp;
+    animation-duration: 4s; */
+    max-width: 500px;
+    position: absolute;
+    display: none;
+    width: 90%;
+    height: auto; 
+    max-height:90% ;
+    border-radius:25px; 
+    object-fit: contain;
+    /* width: auto;
+    height: 450px;*/
+}
+.fade{ 
+    animation-name: fade;
+    animation-duration: 0.9s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fade {
+    from{opacity: 0.4}
+    to{opacity: 1}
+}
+
+/* Slide-in animations */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-left {
+    animation-name: slideInLeft;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+}
+
+.slide-in-right {
+    animation-name: slideInRight;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+}
+
+.slide-in-top {
+    animation-name: slideInTop;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+}
+@media (min-width: 900px) {
+    body{
+        flex-direction: column;
+        min-height: auto;
+    }
+    #left{ 
+        flex:none;
+        width: 100%;
+    }
+    #right{
+        flex: none;
+        width: 100%;
+        min-height: 350px;
+    }
+    #right img{ 
+        width: 85%;
+        max-height: 400px;
+    }
+}
+/* second page is down below */
+@keyframes liquidMesh {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 50% 100%;
+  }
+}
+#gallery{ 
+    max-width: 1900px;
+    width: 100%;
+    height: 525px;
+    /* background-color: #A5A4A1; */
+    display: flex;
+    flex-wrap:wrap;
+    position: relative;
+    align-items: center;
+    overflow: hidden;
+      /* 1. Base vibrant color palette using Apple's iconic tones */
+  --color-1: #0C87F2;
+  --color-2: #0C9AF2;
+  --color-3: #16B4F2;
+  --color-4: #18B5D9;
+  --color-5: #26BFA3;
+
+  /* 2. Stacking overlapping radial gradients to form the mesh */
+  background: 
+    radial-gradient(circle at 20% 30%, var(--color-1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, var(--color-2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, var(--color-3) 0%, transparent 60%),
+    radial-gradient(circle at 90% 70%, var(--color-4) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, var(--color-5) 0%, transparent 10%),
+    #4a159d; /* Deep dark purple fallback canvas background */
+
+  /* 3. Scaled up background size so keyframes can "pan" across the gradient */
+  background-size: 200% 200%;
+  animation: liquidMesh 20s ease infinite alternate;
+}
+#gallery h3{ 
+    animation-name: slideUp;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    color:azure;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    font:italic;
+    position: absolute;
+    top: 3px;
+    margin: 5px 5px;
+}
+
+#gallery .package{ 
+    width: 260px;
+    height: 345px;
+    /* background-color: rgba(225, 225, 225, 0.95); */
+    margin: 10px 20px;
+    border-radius: 15px;
+    position: relative;
+    /* backdrop-filter: blur(10px);
+    border: 1px solid rgba(225, 225, 225, 0,5);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border-radius: 12px; */
+    background-color: rgba(225,225,225,0.55);
+    backdrop-filter: blur(30px) saturate(210%);
+    border: 1px solid rgba(225,225,225,0.4);
+    box-shadow:
+    0 4px 30px rgba(0,0,0,0.3),
+    0 1px 3px rgba(0, 0, 0, 0,2);
+}
+#gallery .reflector{ 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+      pointer-events: none;
+  border-radius: 24px;
+  
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.4) 0%, 
+    rgba(255, 255, 255, 0.1) 40%, 
+    rgba(255, 255, 255, 0) 41%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+#gallery .package img{ 
+    width: 80%;
+    height: 55%;
+    border-radius: 25px;
+    position: absolute;
+    top: 10px;
+    margin: 25px 25px;
+}
+
+#gallery .package h4{ 
+    position: absolute;
+    bottom: 18%;
+    margin: 10px 10px;
+    left: 10%;
+    font-size: 30px;
+    font: italic;
+font-family:'Times New Roman', Times, serif;
+    color: #1d1d1f;
+    z-index: 1;
+}
+
+#gallery .package p{
+    z-index: 1; 
+    position: absolute;
+    bottom: 14px;
+    margin: 10px 10px;
+    left: 5%;
+    font-size: medium;
+    color: #1d1d1f;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+@keyframes hover {
+    from{ 
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(-15px);
+    }
+}
+#gallery .package:hover{ 
+    animation-name: hover;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+}
